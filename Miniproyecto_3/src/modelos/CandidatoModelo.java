@@ -9,7 +9,7 @@ public class CandidatoModelo{
     public Ideologia ideologiaSeleccionada;
     public Ciudades ciudadSeleccionada;
     public Partido partidoSeleccionado;
-    
+
     public String getNombre() {
         return nombre;
     }
