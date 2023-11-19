@@ -1,56 +1,59 @@
 package modelos;
 
-public class CandidatoModelo{
+public class CandidatoModelo extends CiudadanoModelo {
+    private Ideologia ideologia;
+    private Partidos partido;
+    private int votos;
+    private String promesas;
+    private Ciudades ciudad;
 
-    public String nombre;
-    public String cedula;
-    public String promesas;
-    public int votos;
-    public Ideologia ideologiaSeleccionada;
-    public Ciudades ciudadSeleccionada;
-    public Partido partidoSeleccionado;
-
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getCedula() {
-        return cedula;
-    }
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-    public String getPromesas() {
-        return promesas;
-    }
-    public void setPromesas(String promesas) {
+    public CandidatoModelo(Ideologia ideologia, Partidos partido, int votos, String promesas, String nombre, String cedula, Ciudades ciudad){
+        super(nombre, cedula, ciudad);
+        this.ideologia = ideologia;
+        this.partido = partido;
         this.promesas = promesas;
+        this.votos = votos;
+        this.ciudad = ciudad;
     }
+
+    public Ideologia getIdeologia() {
+        return ideologia;
+    }
+
+    public void setIdeologia(Ideologia ideologia) {
+        this.ideologia = ideologia;
+    }
+
+    public Partidos getPartido() {
+        return partido;
+    }
+
+    public void setPartido(Partidos partido) {
+        this.partido = partido;
+    }
+
     public int getVotos() {
         return votos;
     }
+
     public void setVotos(int votos) {
         this.votos = votos;
     }
-    public Ideologia getIdeologiaSeleccionada() {
-        return ideologiaSeleccionada;
-    }
-    public void setIdeologiaSeleccionada(Ideologia ideologiaSeleccionada) {
-        this.ideologiaSeleccionada = ideologiaSeleccionada;
-    }
-    public Ciudades getCiudadSeleccionada() {
-        return ciudadSeleccionada;
-    }
-    public void setCiudadSeleccionada(Ciudades ciudadSeleccionada) {
-        this.ciudadSeleccionada = ciudadSeleccionada;
-    }
-    public Partido getPartidoSeleccionado() {
-        return partidoSeleccionado;
-    }
-    public void setPartidoSeleccionado(Partido partidoSeleccionado) {
-        this.partidoSeleccionado = partidoSeleccionado;
+
+    public String getPromesas() {
+        return promesas;
     }
 
+    public void setPromesas(String promesas) {
+        this.promesas = promesas;
+    }
+
+    public Ciudades getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudades ciudad) {
+        this.ciudad = ciudad;
+    }
+    
 }
