@@ -70,8 +70,24 @@ public class ModeloCrud {
     }
 
     public static void ActualizarCandidato(String cedulaCandidatoActualizar, CandidatoModelo candidatoNew){
-        for (int i = 0; i < listaCandidatos.size(); i++) {
-            CandidatoModelo candidato = listaCandidatos.get(i);
+        // Busca el candidato por la cédula
+        for (CandidatoModelo candidatoExistente : listaCandidatos) {
+            if (candidatoExistente.getCedula().equals(cedulaCandidatoActualizar)) {
+                // Actualiza los atributos del candidato existente con los nuevos valores
+                candidatoExistente.setNombre(candidatoNew.getNombre());
+                candidatoExistente.setPromesas(candidatoNew.getPromesas());
+                candidatoExistente.setVotos(candidatoNew.getVotos());
+                candidatoExistente.setCiudad(candidatoNew.getCiudad());
+                candidatoExistente.setIdeologia(candidatoNew.getIdeologia());
+                candidatoExistente.setPartido(candidatoNew.getPartido());
+
+                System.out.println("Candidato actualizado exitosamente.");
+                return; // Sal del método después de actualizar el candidato
+            }
         }
+
+        System.out.println("Candidato no encontrado");
+
+        
     }
 }

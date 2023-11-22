@@ -325,8 +325,5 @@ public class VistaCandidatoConsola implements VistaCandidato {
         ModeloCrud.RegistrarCandidado(candidato);
         
     }
-
-    
-
     
 }
