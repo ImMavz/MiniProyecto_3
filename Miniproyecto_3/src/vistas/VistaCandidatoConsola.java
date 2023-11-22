@@ -325,5 +325,11 @@ public class VistaCandidatoConsola implements VistaCandidato {
         ModeloCrud.RegistrarCandidado(candidato);
         
     }
+
+    @Override
+    public void MenuPrincipal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'MenuPrincipal'");
+    }
     
 }
