@@ -12,8 +12,8 @@ public class ModeloCrud {
 
     public static ArrayList <CandidatoModelo> listaCandidatos;
 
-    public void CandidatoModelo(){
-        ModeloCrud.listaCandidatos = new ArrayList<>();
+    public static ArrayList<modelos.CandidatoModelo> CandidatoModelo(){
+        return ModeloCrud.listaCandidatos = new ArrayList<>();
     }
 
     public String getNombre(){
