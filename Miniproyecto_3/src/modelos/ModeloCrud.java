@@ -53,8 +53,7 @@ public class ModeloCrud {
     }
 
     public static void EliminarCandidato(String cedulaEliminar){
-
-
+        
         CandidatoModelo candidatoEliminar = null;
         for(CandidatoModelo candidato: listaCandidatos){
             if(candidato.getCedula().equals(cedulaEliminar)){
@@ -70,4 +69,9 @@ public class ModeloCrud {
 
     }
 
+    public static void ActualizarCandidato(String cedulaCandidatoActualizar, CandidatoModelo candidatoNew){
+        for (int i = 0; i < listaCandidatos.size(); i++) {
+            CandidatoModelo candidato = listaCandidatos.get(i);
+        }
+    }
 }

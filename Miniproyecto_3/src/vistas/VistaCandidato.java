@@ -22,6 +22,5 @@ public interface VistaCandidato {
     public void ActualizarCandidato();
     public void EliminarCandidato();
     
-    
 }
  
