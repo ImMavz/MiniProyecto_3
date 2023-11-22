@@ -21,7 +21,7 @@ public interface VistaCandidato {
     public void ImprimirCandidato();
     public void ActualizarCandidato();
     public void EliminarCandidato();
-    public void getListaDeCandidatos(ArrayList <CandidatoModelo> listaCandidatos);
+    
     
 }
  

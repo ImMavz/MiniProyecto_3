@@ -7,6 +7,7 @@ import java.util.Scanner;
 import modelos.CandidatoModelo;
 import modelos.Ciudades;
 import modelos.Ideologia;
+import modelos.ModeloCrud;
 import modelos.Partidos;
 
 public class VistaCandidatoConsola implements VistaCandidato {
@@ -60,31 +61,40 @@ public class VistaCandidatoConsola implements VistaCandidato {
 
     @Override
     public void ActualizarCandidato() {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void EliminarCandidato() {
-        // TODO Auto-generated method stub
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese la cedula del candidato que desea eliminar: ");
+        String cedulaEliminar = scanner.nextLine();
+
+        ModeloCrud.EliminarCandidato(cedulaEliminar);
+
+        System.out.println();
+        System.out.println("Candidato eliminado exitosamente");
         
     }
 
     @Override
     public void ImprimirCandidato() {
-        /* 
+        
+        ArrayList <CandidatoModelo> listaCandidatos = ModeloCrud.ImprimirCandidato();
+
         System.out.println("---CANDIDATOS ACTIVOS---\n");
-        listaCandidatos.forEach((i)->{
-            System.out.println("Nombre del candidato: " + i.getNombre());
-            System.out.println("Numero de cedula del candidato: " + i.getCedula());
-            System.out.println("Ciudad de procedencia del candidato: " + i.getCiudades());
-            System.out.println("La ideologia del candidato: " + i.getIdeologia());
-            System.out.println("Partido politico del candidato: " + i.getPartido());
-            System.out.println("Las promesas del candidato: " + i.getPromesas());
-            System.out.println("Numero de votos del candidato: " + i.getVotos());
+        for(CandidatoModelo candidato: listaCandidatos){
+            System.out.println("Nombre del candidato: " + candidato.getNombre());
+            System.out.println("Numero de cedula del candidato: " + candidato.getCedula());
+            System.out.println("Ciudad de procedencia del candidato: " + candidato.getCiudades());
+            System.out.println("La ideologia del candidato: " + candidato.getIdeologia());
+            System.out.println("Partido politico del candidato: " + candidato.getPartido());
+            System.out.println("Las promesas del candidato: " + candidato.getPromesas());
+            System.out.println("Numero de votos del candidato: " + candidato.getVotos());
             System.out.println("------------------------------\n");
-        });  
-        */
+        }
+        
     }
 
     @Override
@@ -202,12 +212,11 @@ public class VistaCandidatoConsola implements VistaCandidato {
         int votos = scanner.nextInt();
 
         System.out.println();
+
+        CandidatoModelo candidato = new CandidatoModelo(ideologiaElegida, partidoElejido, votos, promesas, nombre, cedula, ciudadElegida);
+        ModeloCrud.RegistrarCandidado(candidato);
         
     }
 
-    @Override
-    public void getListaDeCandidatos(ArrayList <CandidatoModelo> listaCandidatos) {
-        listaCandidatos = new ArrayList<>();
-    }
     
 }
