@@ -1,16 +1,22 @@
 package vistas;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import modelos.CandidatoModelo;
+import modelos.ModeloCrud;
+
 public class VistaCandidatoGanadorGUI extends JFrame{
     public VistaCandidatoGanadorGUI(){
-        Candidato candidatoConMasVotos = VistaCrearCandidatoGUI.listaCandidato.get(0);
+        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
+        CandidatoModelo candidatoConMasVotos = listaCandidato.get(0);
 
         JTextArea etiqueta = new JTextArea();
         StringBuilder texto = new StringBuilder();
         StringBuilder candidatoGanadorTexto = new StringBuilder();
 
-        for (Candidato candidato: VentanaRegistrarCandidatos.listaCandidato){
+        for (CandidatoModelo candidato: listaCandidato){
             if (candidato.getVotos() > candidatoConMasVotos.getVotos()) {
                 candidatoConMasVotos = candidato;
             }    

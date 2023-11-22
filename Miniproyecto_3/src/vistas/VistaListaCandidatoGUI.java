@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import modelos.CandidatoModelo;
+import modelos.ModeloCrud;
+
 
 public class VistaListaCandidatoGUI extends JFrame{
 
     public VistaListaCandidatoGUI() {
 
-
+        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
         
         JTextArea textArea = new JTextArea();
         StringBuilder candidatosTexto = new StringBuilder();
-        for(Candidato candidato: VistaActualizarCandidatoGUI./*listaCandidato*/){
+        for(CandidatoModelo candidato: listaCandidato){
             candidatosTexto.append("Nombre: ").append(candidato.getNombre()).append("\n");
             candidatosTexto.append("Cédula: ").append(candidato.getCedula()).append("\n");
             candidatosTexto.append("Promesas: ").append(candidato.getPromesas()).append("\n");

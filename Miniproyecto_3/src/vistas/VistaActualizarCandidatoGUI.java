@@ -12,11 +12,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import modelos.CandidatoModelo;
 import modelos.Ciudades;
 import modelos.Ideologia;
 import modelos.Partidos;
+import modelos.ModeloCrud;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 
@@ -30,11 +33,12 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
     JMenuBar opcionBar;
     JMenu opcionesActualizar;
     JMenuItem actualizarNombre, actualizarPromesas, actualizarVotos, actualizarCiudad, actualizarIdeologia, actualizarPartido;
-    //Candidato candidatoNew;
+    CandidatoModelo candidatoNew;
     Ciudades ciudadActualizada;
     Partidos partidoActualizado;
     Ideologia ideologiaActualizada;
     boolean candidatoEncontrado = false;
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
 
     String nombre, cedulaBuscar, opcionSeleccionada, nombreActualizado, promesasActualizadas, votoString;
     String cedula;
@@ -99,9 +103,9 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
         
     }
 
-    public Candidato buscarCandidatoPorCedula(){
+    public CandidatoModelo buscarCandidatoPorCedula(){
         cedulaBuscar = candidatoActualizar.getText();
-        for (Candidato candidato :VistaCrearCandidatoGUI.listaCandidato) {
+        for (CandidatoModelo candidato : listaCandidato) {
                 if(candidato.getCedula().equals(cedulaBuscar)){
                     candidatoNew = candidato;
                     break;
@@ -119,7 +123,7 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
 
             buscarCandidatoPorCedula();
             
-            for (Candidato candidato :VentanaRegistrarCandidatos.listaCandidato) {
+            for (CandidatoModelo candidato : listaCandidato) {
                 if(candidato.getCedula().equals(cedulaBuscar)){
                     candidatoEncontrado = true;
                     break;
@@ -158,7 +162,7 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
                     contenedor.repaint();
                     setVisible(true);
                 }else{
-                    JOptionPane.showMessageDialog(VentanaActualizarCandidato.this,
+                    JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this,
                         "Ese candidato no existe!\n Revisa bien si pusiste un numero de mas o te comiste algun numero",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 }   
@@ -213,7 +217,7 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
         if(e.getSource() == botonActualizarNombre){
             nombreActualizado = nombreActualizar.getText();
             if (contieneNumeros(nombreActualizado)){
-                JOptionPane.showMessageDialog(VentanaActualizarCandidato.this, "Porfa no introduzcas numeros en el nombre que si no se cae el programa \n hagame ese gran favor no solo a mi sino tambien al programa", "Error", JOptionPane.ERROR_MESSAGE);;
+                JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this, "Porfa no introduzcas numeros en el nombre que si no se cae el programa \n hagame ese gran favor no solo a mi sino tambien al programa", "Error", JOptionPane.ERROR_MESSAGE);;
                 return;
             }
         }else{
@@ -228,7 +232,7 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
         if(e.getSource() == botonActualizarVotos){
             votoString = votosActualizar.getText();
             if (!contieneLetras(votoString)){
-                JOptionPane.showMessageDialog(VentanaActualizarCandidato.this, "No se desde cuando los votos llevan letras fiera \n Pon los votos solo con numeros pues como vas a contar letras como votos (El algebra no cuenta en este caso)", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this, "No se desde cuando los votos llevan letras fiera \n Pon los votos solo con numeros pues como vas a contar letras como votos (El algebra no cuenta en este caso)", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             } votosActualizados = Integer.parseInt(votoString);
         }else{
@@ -262,10 +266,10 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
         }
 
         cedula = cedulaBuscar;
-        candidatoNew = new Candidato(ideologiaActualizada, partidoActualizado, votosActualizados, promesasActualizadas, nombreActualizado, cedula, ciudadActualizada);
-        for (int i = 0; i < VentanaRegistrarCandidatos.listaCandidato.size(); i++) {
-            if (VentanaRegistrarCandidatos.listaCandidato.get(i).getCedula().equals(cedulaBuscar)) {
-                VentanaRegistrarCandidatos.listaCandidato.set(i, candidatoNew);
+        candidatoNew = new CandidatoModelo(ideologiaActualizada, partidoActualizado, votosActualizados, promesasActualizadas, nombreActualizado, cedula, ciudadActualizada);
+        for (int i = 0; i < listaCandidato.size(); i++) {
+            if (listaCandidato.get(i).getCedula().equals(cedulaBuscar)) {
+                listaCandidato.set(i, candidatoNew);
                 break;
             }
         }    
@@ -276,13 +280,13 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
         return cadena.matches("\\d+");
     }
     private void mostrarExcepcionSeleccionarPartido(String mensaje){
-        JOptionPane.showMessageDialog(VentanaActualizarCandidato.this, "Que curiosa eleccion del partido politico \n No creo que exista así que selecciona otro. ", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this, "Que curiosa eleccion del partido politico \n No creo que exista así que selecciona otro. ", "Error", JOptionPane.ERROR_MESSAGE);
     }
     private void mostrarExcepcionSeleccionarIdeologia(String mensaje){
-        JOptionPane.showMessageDialog(VentanaActualizarCandidato.this, "Curiosa eleccion de ideologia. \n En colombia no existe esa ideologia pero tranqui, cuando exista lo actualizaremos.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this, "Curiosa eleccion de ideologia. \n En colombia no existe esa ideologia pero tranqui, cuando exista lo actualizaremos.", "Error", JOptionPane.ERROR_MESSAGE);
     }
     private void mostrarExcepcionSeleccionarCiudad(String mensaje){
-        JOptionPane.showMessageDialog(VentanaActualizarCandidato.this, "Ineresante eleccion de ciudad. \n No creo que exista :)", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(VistaActualizarCandidatoGUI.this, "Ineresante eleccion de ciudad. \n No creo que exista :)", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
 }

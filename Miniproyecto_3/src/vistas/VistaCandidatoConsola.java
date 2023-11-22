@@ -189,7 +189,7 @@ public class VistaCandidatoConsola implements VistaCandidato {
     @Override
     public void ImprimirCandidato() {
         
-        ArrayList <CandidatoModelo> listaCandidatos = ModeloCrud.ImprimirCandidato();
+        ArrayList <CandidatoModelo> listaCandidatos = ModeloCrud.CandidatoModelo();
 
         System.out.println("---CANDIDATOS ACTIVOS---\n");
         for(CandidatoModelo candidato: listaCandidatos){

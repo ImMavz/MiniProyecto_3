@@ -1,4 +1,5 @@
 package vistas;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,20 +8,23 @@ import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import modelos.CandidatoModelo;
 import modelos.Ciudades;
+import modelos.ModeloCrud;
 
 public class VistaCiudadesCandidatoGUI extends JFrame{
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
     JTextArea ciudadesaArea = new JTextArea();
     StringBuilder texto = new StringBuilder();
 
     public VistaCiudadesCandidatoGUI(){
-        if (VentanaRegistrarCandidatos.listaCandidato.isEmpty()) {
+        if (listaCandidato.isEmpty()) {
             texto.append("No hay nada mi rey").append("\n");
         }
         Map<Ciudades, Integer> contadorCiudades = new HashMap<>(); //Permite representar una estructura de datos para almacenar pares “clave/valor".
 
         texto.append("---CIUDADES CON MENOS CANDIDATOS DE ORIGEN---").append("\n").append("\n");
-        for (Candidato candidato : VentanaRegistrarCandidatos.listaCandidato){
+        for (CandidatoModelo candidato : listaCandidato){
             Ciudades ciudad = candidato.getCiudades();
             contadorCiudades.put(ciudad, contadorCiudades.getOrDefault(ciudad, 0) + 1); //Recorre el mapa y verifica si existe alguna entrada o valor. 
         }

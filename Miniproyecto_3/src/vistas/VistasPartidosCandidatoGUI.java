@@ -1,20 +1,25 @@
 package vistas;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import modelos.CandidatoModelo;
+import modelos.ModeloCrud;
 import modelos.Partidos;
 
 public class VistasPartidosCandidatoGUI extends JFrame{
+
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
     JTextArea paritodosArea = new JTextArea();
     StringBuilder texto = new StringBuilder();
 
     public VistasPartidosCandidatoGUI(){
             Map<Partidos, Integer> conteoPartidos = new HashMap<>();
 
-        for (Candidato candidato : VistaCrearCandidatoGUI.listaCandidato) {
+        for (CandidatoModelo candidato : listaCandidato) {
 
             conteoPartidos.put(candidato.getPartido(), conteoPartidos.getOrDefault(candidato.getPartido(), 0) + 1); //Recorre el mapa y verifica si existe alguna entrada o valor en partido. 
         }
