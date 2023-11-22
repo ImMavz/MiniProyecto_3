@@ -10,7 +10,7 @@ import modelos.ModeloCrud;
 public class VistaVotosCandidatosGUI extends JFrame {
     public VistaVotosCandidatosGUI(){
 
-        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
+        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.CandidatoModelo();
         JTextArea textArea = new JTextArea();
         StringBuilder votosCandidatosTexto = new StringBuilder();
         StringBuilder texto = new StringBuilder();

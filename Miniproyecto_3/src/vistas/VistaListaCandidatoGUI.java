@@ -12,7 +12,7 @@ public class VistaListaCandidatoGUI extends JFrame{
 
     public VistaListaCandidatoGUI() {
 
-        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.ImprimirCandidato();
+        ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.CandidatoModelo();
         
         JTextArea textArea = new JTextArea();
         StringBuilder candidatosTexto = new StringBuilder();
