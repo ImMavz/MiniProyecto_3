@@ -17,7 +17,6 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class VistaCandidatoGUI extends JFrame implements VistaCandidato, ActionListener {
 
@@ -127,7 +126,7 @@ public class VistaCandidatoGUI extends JFrame implements VistaCandidato, ActionL
             });        
 
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == listarCandidatos) {
@@ -156,50 +155,45 @@ public class VistaCandidatoGUI extends JFrame implements VistaCandidato, ActionL
 
     @Override
     public String getNombre() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNombre'");
+        return nombre;
     }
 
     @Override
     public String getPromesas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPromesas'");
+        return promesas;
     }
 
     @Override
     public String getCedula() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCedula'");
+        return cedula;
     }
 
     @Override
     public int getVotos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getVotos'");
+        return votos;
     }
 
     @Override
     public Ideologia getIdeologia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getIdeologia'");
+        return ideologiaSeleccionada;
     }
 
     @Override
     public Ciudades getCiudad() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCiudad'");
+        return ciudadSeleccionada;
     }
 
     @Override
     public Partidos getPartido() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPartido'");
+        return partidoSeleccionado;
     }
 
     @Override
     public void RegistrarCandidado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'RegistrarCandidado'");
+        VistaCrearCandidatoGUI vistaCrearCandidatoGUI = new VistaCrearCandidatoGUI();
+        vistaCrearCandidatoGUI.setVisible(true);
+        
+
     }
 
     @Override
@@ -222,8 +216,7 @@ public class VistaCandidatoGUI extends JFrame implements VistaCandidato, ActionL
 
     @Override
     public void MenuPrincipal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'MenuPrincipal'");
+        
     }
 
 }

@@ -1,6 +1,5 @@
 package vistas;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -328,8 +327,39 @@ public class VistaCandidatoConsola implements VistaCandidato {
 
     @Override
     public void MenuPrincipal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'MenuPrincipal'");
-    }
+        Scanner scanner = new Scanner(System.in);
+        byte opciones;
+        do{
+            System.out.println("--------Bienvenido Ciudadano/Ciudadana-----------\n");
+            System.out.println("--------Digite la opcion a la cual desee acceder---------\n");
+            System.out.println("1) Registar candidato");
+            System.out.println("2) Lista de candidatos");
+            System.out.println("3) Actualizar candidato");
+            System.out.println("4) Elminar candidato");
+            System.out.println("0) Salir de la aplicacion");
+            String input = scanner.nextLine();
+            try {
+                opciones = Byte.parseByte(input);
+            } catch (NumberFormatException e) {
+                // Si no se puede convertir a byte, asignamos un valor que no afectará el bucle
+                opciones = -1;
+            }
+            System.out.println();
+            switch(opciones) {
+                case 1: 
+                    this.RegistrarCandidado(); 
+                    break;
+                case 2: this.ImprimirCandidato();
+                    break;
+                case 3: this.ActualizarCandidato();
+                    break;
+                case 4: this.EliminarCandidato();
+                    break;
+                case 0: break;
+                default: System.out.println("Opcion Invalida");
+            }
+
+        }while(opciones != 0);
+    }   
     
 }

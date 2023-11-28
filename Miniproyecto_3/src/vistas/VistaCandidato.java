@@ -1,8 +1,5 @@
 package vistas;
 
-import java.util.ArrayList;
-
-import modelos.CandidatoModelo;
 import modelos.Ciudades;
 import modelos.Ideologia;
 import modelos.Partidos;
