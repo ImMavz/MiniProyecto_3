@@ -38,7 +38,7 @@ public class VistaActualizarCandidatoGUI extends JFrame implements ActionListene
     Partidos partidoActualizado;
     Ideologia ideologiaActualizada;
     boolean candidatoEncontrado = false;
-    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.CandidatoModelo();
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.listaCandidatos;
 
     String nombre, cedulaBuscar, opcionSeleccionada, nombreActualizado, promesasActualizadas, votoString;
     String cedula;

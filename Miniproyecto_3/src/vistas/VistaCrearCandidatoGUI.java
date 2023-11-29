@@ -11,9 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.util.ArrayList;
 
+import modelos.CandidatoModelo;
 import modelos.Ciudades;
 import modelos.Ideologia;
 import modelos.Partidos;
+import controlador.ControladorGUI;
+
 
 
 public class VistaCrearCandidatoGUI extends JFrame implements ActionListener {
@@ -32,7 +35,7 @@ public class VistaCrearCandidatoGUI extends JFrame implements ActionListener {
     Ideologia ideologiaSeleccionada;
     Ciudades ciudadSeleccionada;
     Partidos partidoSeleccionado;
-    //static ArrayList<Candidato> listaCandidato;
+    static ArrayList<CandidatoModelo> listaCandidato;
     
 
     public VistaCrearCandidatoGUI() {
@@ -141,6 +144,8 @@ public class VistaCrearCandidatoGUI extends JFrame implements ActionListener {
                 ideologiaSeleccionada = (Ideologia) ideologia.getSelectedItem();
                 ciudadSeleccionada = (Ciudades) ciudad.getSelectedItem();
                 partidoSeleccionado = (Partidos) partidos.getSelectedItem();
+
+                ControladorGUI.registrarCandidato(nombre, cedula, promesas, votos, ideologiaSeleccionada, ciudadSeleccionada, partidoSeleccionado);
                 
                 nombreText.setText("");
                 cedulaText.setText("");
@@ -151,7 +156,6 @@ public class VistaCrearCandidatoGUI extends JFrame implements ActionListener {
                 ciudad.setSelectedIndex(0);
 
             } catch (RuntimeException ex) {
-                // Mostrar un mensaje indicando que se ha producido una excepción
                 JOptionPane.showMessageDialog(this, "No se desde cuando los votos pueden llevar letras", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }

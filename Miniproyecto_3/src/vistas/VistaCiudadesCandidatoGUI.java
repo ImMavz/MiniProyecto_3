@@ -13,7 +13,7 @@ import modelos.Ciudades;
 import modelos.ModeloCrud;
 
 public class VistaCiudadesCandidatoGUI extends JFrame{
-    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.CandidatoModelo();
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.listaCandidatos;
     JTextArea ciudadesaArea = new JTextArea();
     StringBuilder texto = new StringBuilder();
 

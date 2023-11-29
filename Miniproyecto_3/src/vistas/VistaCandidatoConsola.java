@@ -20,7 +20,7 @@ public class VistaCandidatoConsola implements VistaCandidato {
 
     @Override
     public void iniciar() {
-        MenuPrincipal();
+        
     }
 
     @Override
@@ -337,7 +337,6 @@ public class VistaCandidatoConsola implements VistaCandidato {
             System.out.println("3) Actualizar candidato");
             System.out.println("4) Elminar candidato");
             System.out.println("0) Salir de la aplicacion");
-            System.out.print("Digite una opcion: ");
             String input = scanner.nextLine();
             try {
                 opciones = Byte.parseByte(input);
