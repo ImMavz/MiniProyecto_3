@@ -38,7 +38,6 @@ public class VistaEliminarCandidatoGUI extends JFrame {
 
         eliminar.addActionListener(e -> {
             String cedulaAEliminar = eliminarText.getText();
-            boolean candidatoEliminado = false;
             //Si no hay nada introducido sale el error
             if (cedulaAEliminar.isEmpty() ) {
                 JOptionPane.showMessageDialog(this, "¿Como vas a eliminar nada?\n Introduce algo por favor.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -49,7 +48,7 @@ public class VistaEliminarCandidatoGUI extends JFrame {
                 JOptionPane.showMessageDialog(this, "Que cedula mas rara que contiene letras \n ¿si será colombiana?", "Error", JOptionPane.ERROR_MESSAGE);
                 return; 
             }
-            ModeloCrud.EliminarCandidato(cedulaAEliminar);
+            ModeloCrud.EliminarCandidatoGUI(cedulaAEliminar);
             JOptionPane.showMessageDialog(this, "Candidato eliminado correctamente.", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
             eliminarText.setText("");
         });

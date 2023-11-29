@@ -3,15 +3,52 @@ package vistas;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import modelos.CandidatoModelo;
-import modelos.Ciudades;
-import modelos.Ideologia;
-import modelos.ModeloCrud;
-import modelos.Partidos;
+import modelos.*;
 
 public class VistaCandidatoConsola implements VistaCandidato {
+    ModeloCrud modeloCrud;
 
 
+    public void setModeloCrud(ModeloCrud modeloCrud){
+        this.modeloCrud = modeloCrud;
+    }
+
+    public void MenuPrincipal() {
+        Scanner scanner = new Scanner(System.in);
+        byte opciones;
+        do{
+            System.out.println("--------Bienvenido Ciudadano/Ciudadana-----------\n");
+            System.out.println("--------Digite la opcion a la cual desee acceder---------\n");
+            System.out.println("1) Registar candidato");
+            System.out.println("2) Lista de candidatos");
+            System.out.println("3) Actualizar candidato");
+            System.out.println("4) Elminar candidato");
+            System.out.println("0) Salir de la aplicacion");
+            String input = scanner.nextLine();
+            try {
+                opciones = Byte.parseByte(input);
+            } catch (NumberFormatException e) {
+                // Si no se puede convertir a byte, asignamos un valor que no afectará el bucle
+                opciones = -1;
+            }
+            System.out.println();
+            switch(opciones) {
+                case 1: 
+                    this.RegistrarCandidado(); 
+                    break;
+                case 2: this.ImprimirCandidato();
+                    break;
+                case 3: this.ActualizarCandidato();
+                    break;
+                case 4: this.EliminarCandidato();
+                    break;
+                case 0: break;
+                default: System.out.println("Opcion Invalida");
+            }
+
+        }while(opciones != 0);
+    }   
+    
     Ideologia ideologia;
     Partidos partido;
     int votos;
@@ -167,7 +204,7 @@ public class VistaCandidatoConsola implements VistaCandidato {
         
         CandidatoModelo candidatoNew = new CandidatoModelo(ideologiaElegida, partidoElejido, nuevosVotos, nuevaPromesas, nuevoNombre, cedula, ciudadElegida);
 
-        ModeloCrud.ActualizarCandidato(cedulaCandidatoActualizar, candidatoNew);
+        ModeloCrud.ActualizarCandidatoConsola(cedulaCandidatoActualizar, candidatoNew);
 
     }
 
@@ -178,7 +215,7 @@ public class VistaCandidatoConsola implements VistaCandidato {
         System.out.print("Ingrese la cedula del candidato que desea eliminar: ");
         String cedulaEliminar = scanner.nextLine();
 
-        ModeloCrud.EliminarCandidato(cedulaEliminar);
+        ModeloCrud.EliminarCandidatoConsola(cedulaEliminar);
 
         System.out.println();
         System.out.println("Candidato eliminado exitosamente");
@@ -188,7 +225,7 @@ public class VistaCandidatoConsola implements VistaCandidato {
     @Override
     public void ImprimirCandidato() {
         
-        ArrayList <CandidatoModelo> listaCandidatos = ModeloCrud.CandidatoModelo();
+        ArrayList <CandidatoModelo> listaCandidatos = ModeloCrud.listaCandidatos;
 
         System.out.println("---CANDIDATOS ACTIVOS---\n");
         for(CandidatoModelo candidato: listaCandidatos){
@@ -323,43 +360,5 @@ public class VistaCandidatoConsola implements VistaCandidato {
         CandidatoModelo candidato = new CandidatoModelo(ideologiaElegida, partidoElejido, votos, promesas, nombre, cedula, ciudadElegida);
         ModeloCrud.RegistrarCandidado(candidato);
         
-    }
-
-    @Override
-    public void MenuPrincipal() {
-        Scanner scanner = new Scanner(System.in);
-        byte opciones;
-        do{
-            System.out.println("--------Bienvenido Ciudadano/Ciudadana-----------\n");
-            System.out.println("--------Digite la opcion a la cual desee acceder---------\n");
-            System.out.println("1) Registar candidato");
-            System.out.println("2) Lista de candidatos");
-            System.out.println("3) Actualizar candidato");
-            System.out.println("4) Elminar candidato");
-            System.out.println("0) Salir de la aplicacion");
-            String input = scanner.nextLine();
-            try {
-                opciones = Byte.parseByte(input);
-            } catch (NumberFormatException e) {
-                // Si no se puede convertir a byte, asignamos un valor que no afectará el bucle
-                opciones = -1;
-            }
-            System.out.println();
-            switch(opciones) {
-                case 1: 
-                    this.RegistrarCandidado(); 
-                    break;
-                case 2: this.ImprimirCandidato();
-                    break;
-                case 3: this.ActualizarCandidato();
-                    break;
-                case 4: this.EliminarCandidato();
-                    break;
-                case 0: break;
-                default: System.out.println("Opcion Invalida");
-            }
-
-        }while(opciones != 0);
-    }   
-    
+    }    
 }
