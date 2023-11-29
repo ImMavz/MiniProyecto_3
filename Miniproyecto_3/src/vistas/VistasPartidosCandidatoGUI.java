@@ -12,7 +12,7 @@ import modelos.Partidos;
 
 public class VistasPartidosCandidatoGUI extends JFrame{
 
-    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.CandidatoModelo();
+    ArrayList <CandidatoModelo> listaCandidato = ModeloCrud.listaCandidatos;
     JTextArea paritodosArea = new JTextArea();
     StringBuilder texto = new StringBuilder();
 
