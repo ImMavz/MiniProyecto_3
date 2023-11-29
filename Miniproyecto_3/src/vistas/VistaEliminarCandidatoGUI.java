@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.util.ArrayList;
+import modelos.CandidatoModelo;
 import modelos.ModeloCrud;
 
 public class VistaEliminarCandidatoGUI extends JFrame {
@@ -15,7 +16,8 @@ public class VistaEliminarCandidatoGUI extends JFrame {
     JLabel eliminarJLabel;
     JTextField eliminarText;
     JButton guardar, eliminar;
-    
+    static ArrayList<CandidatoModelo> listaCandidato;
+   
     public VistaEliminarCandidatoGUI(){
 
         setTitle("Eliminar Candidato");
@@ -47,17 +49,9 @@ public class VistaEliminarCandidatoGUI extends JFrame {
                 JOptionPane.showMessageDialog(this, "Que cedula mas rara que contiene letras \n ¿si será colombiana?", "Error", JOptionPane.ERROR_MESSAGE);
                 return; 
             }
-                
-
-            if (candidatoEliminado) {
-                JOptionPane.showMessageDialog(this, "Se eliminó al candidato correctamente", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "¿Estas seguro que existe esa cedula del candidato? \n Cuidado con un numero de mas o de menos", "Error al eliminar", JOptionPane.WARNING_MESSAGE);
-            }
-
+            ModeloCrud.EliminarCandidato(cedulaAEliminar);
+            JOptionPane.showMessageDialog(this, "Candidato eliminado correctamente.", "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            eliminarText.setText("");
         });
-
-
-    }
-    
+    }    
 }
