@@ -10,11 +10,7 @@ public class ModeloCrud {
     private Ciudades ciudad;
     private Partidos partido;
 
-    public static ArrayList <CandidatoModelo> listaCandidatos;
-
-    public static ArrayList<modelos.CandidatoModelo> CandidatoModelo(){
-        return ModeloCrud.listaCandidatos = new ArrayList<>();
-    }
+    public static ArrayList <CandidatoModelo> listaCandidatos = new ArrayList<>();
 
     public String getNombre(){
         return nombre;
@@ -52,7 +48,7 @@ public class ModeloCrud {
         return listaCandidatos;
     }
 
-    public static void EliminarCandidato(String cedulaEliminar){
+    public static void EliminarCandidatoGUI(String cedulaEliminar){
         
         CandidatoModelo candidatoEliminar = null;
         for(CandidatoModelo candidato: listaCandidatos){
@@ -69,7 +65,7 @@ public class ModeloCrud {
 
     }
 
-    public static void ActualizarCandidato(String cedulaCandidatoActualizar, CandidatoModelo candidatoNew){
+    public static void ActualizarCandidatoGUI(String cedulaCandidatoActualizar, CandidatoModelo candidatoNew){
         // Busca el candidato por la cédula
         for (CandidatoModelo candidatoExistente : listaCandidatos) {
             if (candidatoExistente.getCedula().equals(cedulaCandidatoActualizar)) {
@@ -86,8 +82,21 @@ public class ModeloCrud {
             }
         }
 
-        System.out.println("Candidato no encontrado");
+        System.out.println("Candidato no encontrado");    
+    }
+    public static void ActualizarCandidatoConsola(String cedula, CandidatoModelo candidato){
+        for (int i = 0; i < listaCandidatos.size(); i++){
+            if(listaCandidatos.get(i).getCedula().equals(cedula)){
+                listaCandidatos.set(i, candidato);
+                break;
+            }
+        }
+    }
+    public static void EliminarCandidatoConsola(String cedula) {
+        listaCandidatos.removeIf(candidato -> candidato.getCedula().equals(cedula));
+    }
 
-        
+    public static ArrayList<CandidatoModelo> obtenerListaCandidatos() {
+        return listaCandidatos;
     }
 }
