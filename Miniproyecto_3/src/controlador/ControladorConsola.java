@@ -1,24 +1,21 @@
 package controlador;
 
 import modelos.ModeloCrud;
-import vistas.VistaCandidato;
+import vistas.VistaCandidatoConsola;
 
 public class ControladorConsola{
 
     ModeloCrud modeloCrud;
-    VistaCandidato vista;
+    VistaCandidatoConsola vista;
 
-    public ControladorConsola(ModeloCrud modeloCrud, VistaCandidato vista){
-        this.modeloCrud = modeloCrud;
+    public ControladorConsola(VistaCandidatoConsola vista){
         this.vista = vista;
+        this.modeloCrud = new ModeloCrud();
     } 
 
     public void iniciar(){
+        vista.setModeloCrud(modeloCrud);
         vista.MenuPrincipal();
-    }
 
-    
-
-
-    
+    }    
 }

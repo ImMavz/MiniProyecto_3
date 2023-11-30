@@ -43,7 +43,7 @@ public class ControladorGUI {
     }
 
     public static void eliminarCandidato(String cedula) {
-        ModeloCrud.EliminarCandidato(cedula);
+        ModeloCrud.EliminarCandidatoGUI(cedula);
     }
 
     public static void actualizarCandidato(
@@ -51,14 +51,16 @@ public class ControladorGUI {
             Ideologia ideologia, Ciudades ciudad, Partidos partido
     ) {
         CandidatoModelo candidatoNuevo = new CandidatoModelo(ideologia, partido, votos, promesas, nombre, cedulaBuscar, ciudad);
-        ModeloCrud.ActualizarCandidato(cedulaBuscar, candidatoNuevo);
+        ModeloCrud.ActualizarCandidatoGUI(cedulaBuscar, candidatoNuevo);
     }
 
+ 
     public void iniciarVistaCandidatoGUI() {
         VistaCandidatoGUI vista = new VistaCandidatoGUI();
         vista.setVisible(true);
     }
-
+}
+    /*
     public void iniciarVistaEliminarCandidato() {
     }
 
@@ -66,8 +68,8 @@ public class ControladorGUI {
     }
 
     public void iniciarVistaListaCandidato() {
-        /*VistaListaCandidatoGUI vista = new VistaListaCandidatoGUI();
-        vista.setVisible(false);*/
+        VistaListaCandidatoGUI vista = new VistaListaCandidatoGUI();
+        vista.setVisible(false);
     }
 
     public void iniciarVistaCandidatoGanador() {
@@ -77,13 +79,14 @@ public class ControladorGUI {
     }
 
     public void iniciarVistaPartidosCandidato() {
-        /*VistasPartidosCandidatoGUI vista = new VistasPartidosCandidatoGUI();
-        vista.setVisible(false);*/
+        VistasPartidosCandidatoGUI vista = new VistasPartidosCandidatoGUI();
+        vista.setVisible(false);
     }
 
     public void iniciarVistaCrearCandidato() {
-        /*VistaCrearCandidatoGUI vista = new VistaCrearCandidatoGUI();
-        vista.setVisible(false);*/
+        VistaCrearCandidatoGUI vista = new VistaCrearCandidatoGUI();
+        vista.setVisible(false);
     }
 
 }
+*/
