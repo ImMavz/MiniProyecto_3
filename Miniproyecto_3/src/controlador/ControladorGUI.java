@@ -54,39 +54,8 @@ public class ControladorGUI {
         ModeloCrud.ActualizarCandidatoGUI(cedulaBuscar, candidatoNuevo);
     }
 
- 
     public void iniciarVistaCandidatoGUI() {
         VistaCandidatoGUI vista = new VistaCandidatoGUI();
         vista.setVisible(true);
     }
 }
-    /*
-    public void iniciarVistaEliminarCandidato() {
-    }
-
-    public void iniciarVistaVotosCandidatos() {
-    }
-
-    public void iniciarVistaListaCandidato() {
-        VistaListaCandidatoGUI vista = new VistaListaCandidatoGUI();
-        vista.setVisible(false);
-    }
-
-    public void iniciarVistaCandidatoGanador() {
-    }
-
-    public void iniciarVistaCiudadesCandidato() {
-    }
-
-    public void iniciarVistaPartidosCandidato() {
-        VistasPartidosCandidatoGUI vista = new VistasPartidosCandidatoGUI();
-        vista.setVisible(false);
-    }
-
-    public void iniciarVistaCrearCandidato() {
-        VistaCrearCandidatoGUI vista = new VistaCrearCandidatoGUI();
-        vista.setVisible(false);
-    }
-
-}
-*/
