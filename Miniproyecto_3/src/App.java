@@ -1,22 +1,16 @@
+import controlador.ControladorConsola;
 import controlador.ControladorGUI;
 import vistas.VistaCandidatoConsola;
 
 public class App {
 
     public static void main(String[] args) {
-        ControladorGUI controlador = new ControladorGUI();
+        ControladorGUI controladorGUI = new ControladorGUI();
         VistaCandidatoConsola vistaCandidatoConsola = new VistaCandidatoConsola();
+        ControladorConsola controladorConsola = new ControladorConsola(vistaCandidatoConsola);
 
-        controlador.iniciarVistaCandidatoGUI();
-        controlador.iniciarVistaEliminarCandidato();
-        controlador.iniciarVistaListaCandidato();
-        controlador.iniciarVistaVotosCandidatos();
-        controlador.iniciarVistaCandidatoGanador();
-        controlador.iniciarVistaCiudadesCandidato();
-        controlador.iniciarVistaPartidosCandidato();
-        controlador.iniciarVistaCrearCandidato();
-
-        vistaCandidatoConsola.iniciar();
-
+        controladorGUI.iniciarVistaCandidatoGUI();
+        controladorConsola.iniciar();
+        
     }
 }
